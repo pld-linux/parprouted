@@ -1,4 +1,5 @@
-Summary:	daemon for transparent IP (Layer 3) proxy ARP bridging
+Summary:	Daemon for transparent IP (Layer 3) proxy ARP bridging
+Summary(pl):	Demon do przezroczystego bridgowania IP proxy ARP (w warstwie 3)
 Name:		parprouted
 Version:	0.42
 Release:	2
@@ -20,6 +21,14 @@ bridge Ethernet networks behind wireless nodes. Normal L2 bridging
 does not work between wireless nodes because wireless does not know
 about MAC addresses used in the wired Ethernet networks.
 
+%description -l pl
+parprouted to demon do przezroczystego bridgowania IP proxy ARP (w
+warstwie 3.). W przeciwieñstwie do standardowego bridgowania
+bridgowanie proxy ARP pozwala na bridgowanie sieci ethernetowych za
+bezprzewodowymi wêz³ami. Normalne bridgowanie w warstwie 2. nie dzia³a
+pomiêdzy wêz³ami bezprzewodowymi poniewa¿ nie znaj± one adresów MAC
+u¿ywanych w przewodowych sieciach Ethernet.
+
 %prep
 %setup -q
 %patch0 -p1
@@ -35,7 +44,7 @@ install -d $RPM_BUILD_ROOT{%{_sbindir},%{_mandir}/man8,%{_sysconfdir}/rc.d/init.
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-cp %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/rc.d/init.d/%{name}
+install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/rc.d/init.d/%{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -61,4 +70,4 @@ fi
 %doc CHANGELOG README
 %attr(755,root,root) %{_sbindir}/*
 %{_mandir}/man8/*
-%attr(754,root,root) %{_sysconfdir}/rc.d/init.d/*
+%attr(754,root,root) /etc/rc.d/init.d/*
