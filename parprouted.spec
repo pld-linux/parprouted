@@ -11,6 +11,7 @@ Source0:	http://www.hazard.maks.net/%{name}/%{name}-%{version}.tar.gz
 Source1:	%{name}.init
 Patch0:		%{name}-Makefile.patch
 URL:		http://freshmeat.net/projects/parprouted/
+PreReq:		rc-scripts
 Requires(post,preun):	/sbin/chkconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -34,17 +35,19 @@ u¿ywanych w przewodowych sieciach Ethernet.
 %patch0 -p1
 
 %build
-%{__make}
+%{__make} \
+	CC="%{__cc}" \
+	CFLAGS="%{rpmcflags} -Wall" \
+	LDFLAGS="%{rpmldflags}"
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
-install -d $RPM_BUILD_ROOT{%{_sbindir},%{_mandir}/man8,%{_sysconfdir}/rc.d/init.d}
+install -d $RPM_BUILD_ROOT{%{_sbindir},%{_mandir}/man8,/etc/rc.d/init.d}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/rc.d/init.d/%{name}
+install %{SOURCE1} $RPM_BUILD_ROOT/etc/rc.d/init.d/%{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
