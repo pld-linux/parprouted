@@ -4,24 +4,24 @@ Version:	0.42
 Release:	2
 Epoch:		1
 License:	GPL
-Group:		Daemon
+Group:		Daemons
 Source0:	http://www.hazard.maks.net/%{name}/%{name}-%{version}.tar.gz
 # Source0-md5:	7680ab8850c11d690eb5b802ae67edc1
 Source1:	%{name}.init
 Patch0:		%{name}-Makefile.patch
 URL:		http://freshmeat.net/projects/parprouted/
-Requires(post,preun):   /sbin/chkconfig
+Requires(post,preun):	/sbin/chkconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-parprouted is a daemon for transparent IP (Layer 3) proxy ARP bridging.
-Unlike standard bridging, proxy ARP bridging allows to bridge Ethernet
-networks behind wireless nodes. Normal L2 bridging does not work
-between wireless nodes because wireless does not know about MAC
-addresses used in the wired Ethernet networks.
+parprouted is a daemon for transparent IP (Layer 3) proxy ARP
+bridging. Unlike standard bridging, proxy ARP bridging allows to
+bridge Ethernet networks behind wireless nodes. Normal L2 bridging
+does not work between wireless nodes because wireless does not know
+about MAC addresses used in the wired Ethernet networks.
 
 %prep
-%setup -q 
+%setup -q
 %patch0 -p1
 
 %build
@@ -58,7 +58,7 @@ fi
 
 %files
 %defattr(644,root,root,755)
-%doc CHANGELOG README 
+%doc CHANGELOG README
 %attr(755,root,root) %{_sbindir}/*
 %{_mandir}/man8/*
 %attr(754,root,root) %{_sysconfdir}/rc.d/init.d/*
