@@ -20,7 +20,7 @@
 # Get service config - may override defaults
 [ -f /etc/sysconfig/parprouted ] && . /etc/sysconfig/parprouted
 
-if [ -z "${INTERFACES}" ]; then
+if [ -z "${IFS}" ]; then
     echo First set IFS variable in /etc/sysconfig/parprouted.
     echo For example: IFS=eth0 wlan0
     exit 0
