@@ -20,11 +20,17 @@
 # Get service config - may override defaults
 [ -f /etc/sysconfig/parprouted ] && . /etc/sysconfig/parprouted
 
+if [ -z "${INTERFACES}" ]; then
+    echo First set IFS variable in /etc/sysconfig/parprouted.
+    echo For example: IFS=eth0 wlan0
+    exit 0
+fi
+
 # Check that networking is up.
 if is_yes "${NETWORKING}"; then
 	if [ ! -f /var/lock/subsys/network ]; then
 		# nls "ERROR: Networking is down. %s can't be run." parprouted
-		msg_network_down parprouted
+		msg_network_down parprouted ${IFS}
 		exit 1
 	fi
 else
