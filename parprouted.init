@@ -1,0 +1,80 @@
+#!/bin/sh
+#
+# parprouted	parprouted  Proxy ARP IP bridging daemon
+#
+# chkconfig:	2345 11 89
+#
+# description:	parprouted is a daemon for transparent 
+#               IP (Layer 3) proxy ARP bridging
+#
+
+
+# Source function library
+. /etc/rc.d/init.d/functions
+
+# Get network config
+. /etc/sysconfig/network
+
+# Set defaults
+
+# Get service config - may override defaults
+[ -f /etc/sysconfig/parprouted ] && . /etc/sysconfig/parprouted
+
+# Check that networking is up.
+if is_yes "${NETWORKING}"; then
+	if [ ! -f /var/lock/subsys/network ]; then
+		# nls "ERROR: Networking is down. %s can't be run." parprouted
+		msg_network_down parprouted
+		exit 1
+	fi
+else
+	exit 0
+fi
+
+
+# See how we were called.
+case "$1" in
+  start)
+	# Check if the service is already running?
+	if [ ! -f /var/lock/subsys/parprouted ]; then
+		# show "Starting %s service" parprouted
+		msg_starting parprouted
+		daemon parprouted
+		RETVAL=$?
+		[ $RETVAL -eq 0 ] && touch /var/lock/subsys/parprouted
+	else
+		# show "%s service is already running." parprouted
+		msg_already_running parprouted
+	fi
+	;;
+  stop)
+	if [ -f /var/lock/subsys/parprouted ]; then
+		# Stop daemons.
+		# show "Stopping %s service" parprouted
+		msg_stopping parprouted
+		killproc parprouted
+		rm -f /var/lock/subsys/parprouted
+	else
+		# show "%s service is not running." parprouted
+		msg_not_running parprouted
+	fi
+	;;
+  restart)
+	$0 stop
+	$0 start
+	exit $?
+	;;
+  status)
+	status parprouted
+	RETVAL=$?
+	;;
+  *)
+	# show "Usage: %s {start|stop|restart|reload|force-reload|status}"
+	msg_usage "$0 {start|stop|restart|reload|force-reload|status}"
+	exit 3
+esac
+
+exit $RETVAL
+
+# This must be last line !
+# vi:syntax=sh:tw=78:ts=8:sw=4
