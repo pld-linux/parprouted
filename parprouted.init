@@ -4,7 +4,7 @@
 #
 # chkconfig:	2345 11 89
 #
-# description:	parprouted is a daemon for transparent 
+# description:	parprouted is a daemon for transparent \
 #               IP (Layer 3) proxy ARP bridging
 #
 
