@@ -10,7 +10,7 @@ Source0:	http://www.hazard.maks.net/%{name}/%{name}-%{version}.tar.gz
 # Source0-md5:	7680ab8850c11d690eb5b802ae67edc1
 Source1:	%{name}.init
 Patch0:		%{name}-Makefile.patch
-URL:		http://freshmeat.net/projects/parprouted/
+URL:		http://www.hazard.maks.net/
 PreReq:		rc-scripts
 Requires(post,preun):	/sbin/chkconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
