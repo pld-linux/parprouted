@@ -1,7 +1,7 @@
 Summary:	daemon for transparent IP (Layer 3) proxy ARP bridging
 Name:		parprouted
 Version:	0.42
-Release:	1
+Release:	2
 Epoch:		1
 License:	GPL
 Group:		Daemon
@@ -61,4 +61,4 @@ fi
 %doc CHANGELOG README 
 %attr(755,root,root) %{_sbindir}/*
 %{_mandir}/man8/*
-%{_sysconfdir}/rc.d/init.d/*
+%attr(754,root,root) %{_sysconfdir}/rc.d/init.d/*
