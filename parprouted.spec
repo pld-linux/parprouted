@@ -1,13 +1,13 @@
 Summary:	Daemon for transparent IP (Layer 3) proxy ARP bridging
 Summary(pl):	Demon do przezroczystego bridgowania IP proxy ARP (w warstwie 3)
 Name:		parprouted
-Version:	0.42
-Release:	2
+Version:	0.63
+Release:	1
 Epoch:		1
 License:	GPL
 Group:		Daemons
 Source0:	http://www.hazard.maks.net/%{name}/%{name}-%{version}.tar.gz
-# Source0-md5:	7680ab8850c11d690eb5b802ae67edc1
+# Source0-md5:	12753098a22e82997d1941d6d2284750
 Source1:	%{name}.init
 Patch0:		%{name}-Makefile.patch
 URL:		http://www.hazard.maks.net/
