@@ -6,7 +6,7 @@ diff -Naur parprouted-0.42.orig/Makefile parprouted-0.42/Makefile
  
  CC = gcc
 -
- CFLAGS = -O2 -Wall $(EXTRA_CFLAGS)
+ CFLAGS = -g -O2 -Wall $(EXTRA_CFLAGS)
  LDFLAGS = -s 
  OBJS = parprouted.o arp.o
 -
