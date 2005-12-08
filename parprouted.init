@@ -29,7 +29,6 @@ fi
 # Check that networking is up.
 if is_yes "${NETWORKING}"; then
 	if [ ! -f /var/lock/subsys/network ]; then
-		# nls "ERROR: Networking is down. %s can't be run." parprouted
 		msg_network_down parprouted ${IFS}
 		exit 1
 	fi
@@ -43,25 +42,21 @@ case "$1" in
   start)
 	# Check if the service is already running?
 	if [ ! -f /var/lock/subsys/parprouted ]; then
-		# show "Starting %s service" parprouted
 		msg_starting parprouted
 		daemon parprouted
 		RETVAL=$?
 		[ $RETVAL -eq 0 ] && touch /var/lock/subsys/parprouted
 	else
-		# show "%s service is already running." parprouted
 		msg_already_running parprouted
 	fi
 	;;
   stop)
 	if [ -f /var/lock/subsys/parprouted ]; then
 		# Stop daemons.
-		# show "Stopping %s service" parprouted
 		msg_stopping parprouted
 		killproc parprouted
 		rm -f /var/lock/subsys/parprouted
 	else
-		# show "%s service is not running." parprouted
 		msg_not_running parprouted
 	fi
 	;;
@@ -75,7 +70,6 @@ case "$1" in
 	RETVAL=$?
 	;;
   *)
-	# show "Usage: %s {start|stop|restart|reload|force-reload|status}"
 	msg_usage "$0 {start|stop|restart|reload|force-reload|status}"
 	exit 3
 esac
