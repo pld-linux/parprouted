@@ -55,17 +55,17 @@ rm -rf $RPM_BUILD_ROOT
 %post
 /sbin/chkconfig --add parprouted
 if [ -f /var/lock/subsys/parprouted ]; then
-        /etc/rc.d/init.d/parprouted restart 1>&2
+	/etc/rc.d/init.d/parprouted restart 1>&2
 else
-        echo "Run \"/etc/rc.d/init.d/parprouted start\" to start parprouted daemon."
+	echo "Run \"/etc/rc.d/init.d/parprouted start\" to start parprouted daemon."
 fi
 
 %preun
 if [ "$1" = "0" ]; then
-        if [ -f /var/lock/subsys/parprouted ]; then
-                /etc/rc.d/init.d/parprouted stop 1>&2
-        fi
-        /sbin/chkconfig --del parprouted
+	if [ -f /var/lock/subsys/parprouted ]; then
+		/etc/rc.d/init.d/parprouted stop 1>&2
+	fi
+	/sbin/chkconfig --del parprouted
 fi
 
 %files
