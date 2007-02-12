@@ -1,5 +1,5 @@
 Summary:	Daemon for transparent IP (Layer 3) proxy ARP bridging
-Summary(pl):	Demon do przezroczystego bridgowania IP proxy ARP (w warstwie 3)
+Summary(pl.UTF-8):   Demon do przezroczystego bridgowania IP proxy ARP (w warstwie 3)
 Name:		parprouted
 Version:	0.63
 Release:	1
@@ -22,13 +22,13 @@ bridge Ethernet networks behind wireless nodes. Normal L2 bridging
 does not work between wireless nodes because wireless does not know
 about MAC addresses used in the wired Ethernet networks.
 
-%description -l pl
+%description -l pl.UTF-8
 parprouted to demon do przezroczystego bridgowania IP proxy ARP (w
-warstwie 3.). W przeciwieñstwie do standardowego bridgowania
+warstwie 3.). W przeciwieÅ„stwie do standardowego bridgowania
 bridgowanie proxy ARP pozwala na bridgowanie sieci ethernetowych za
-bezprzewodowymi wêz³ami. Normalne bridgowanie w warstwie 2. nie dzia³a
-pomiêdzy wêz³ami bezprzewodowymi poniewa¿ nie znaj± one adresów MAC
-u¿ywanych w przewodowych sieciach Ethernet.
+bezprzewodowymi wÄ™zÅ‚ami. Normalne bridgowanie w warstwie 2. nie dziaÅ‚a
+pomiÄ™dzy wÄ™zÅ‚ami bezprzewodowymi poniewaÅ¼ nie znajÄ… one adresÃ³w MAC
+uÅ¼ywanych w przewodowych sieciach Ethernet.
 
 %prep
 %setup -q
