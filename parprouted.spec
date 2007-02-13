@@ -1,5 +1,5 @@
 Summary:	Daemon for transparent IP (Layer 3) proxy ARP bridging
-Summary(pl.UTF-8):   Demon do przezroczystego bridgowania IP proxy ARP (w warstwie 3)
+Summary(pl.UTF-8):	Demon do przezroczystego bridgowania IP proxy ARP (w warstwie 3)
 Name:		parprouted
 Version:	0.63
 Release:	1
